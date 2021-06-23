@@ -1,15 +1,18 @@
 package com.michaeldsmithjr.bpsimulation.screener
 
+import com.michaeldsmithjr.bpsimulation.domain.Domain
 import org.springframework.stereotype.Service
 
 @Service
-class ScreenerService {
+class ScreenerService(
+    private val screenerQuestionToDomainRepository: ScreenerQuestionToDomainRepository
+) {
 
-    val domainMapping = listOf<ScreenerQuestionToDomain>()
 
-    fun processResponse(response: ScreenerResponse): ScreenerResults {
+    fun processResponse(screenerId: String, response: ScreenerResponse): ScreenerResults {
         val scores = ScreenerScore()
-        val domainMappingByQuestionId = domainMapping.associateBy { it.questionId }
+        val domainMapping = screenerQuestionToDomainRepository.findAllById_ScreenerId(screenerId)
+        val domainMappingByQuestionId = domainMapping.associateBy { it.id.questionId }
 
         response.answers.forEach {
             val mapping = domainMappingByQuestionId[it.questionId]

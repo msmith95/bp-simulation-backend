@@ -1,4 +1,4 @@
-package com.michaeldsmithjr.bpsimulation.screener
+package com.michaeldsmithjr.bpsimulation.domain
 
 import com.fasterxml.jackson.annotation.JsonCreator
 
