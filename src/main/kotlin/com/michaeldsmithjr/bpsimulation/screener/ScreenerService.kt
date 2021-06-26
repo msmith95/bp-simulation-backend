@@ -5,8 +5,13 @@ import org.springframework.stereotype.Service
 
 @Service
 class ScreenerService(
-    private val screenerQuestionToDomainRepository: ScreenerQuestionToDomainRepository
+    private val screenerQuestionToDomainRepository: ScreenerQuestionToDomainRepository,
+    private val screenerRepository: ScreenerRepository,
 ) {
+
+    fun getScreener(screenerId: String): Screener {
+        return screenerRepository.getById(screenerId)
+    }
 
     /**
      * Processes a response to a screener

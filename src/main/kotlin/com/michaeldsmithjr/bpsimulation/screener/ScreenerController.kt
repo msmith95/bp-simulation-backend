@@ -17,4 +17,9 @@ class ScreenerController(
     fun processAnswers(@RequestBody screenerResponse: ScreenerResponse, @PathVariable screenerId: String): ScreenerResults {
         return screenerService.processResponse(screenerId, screenerResponse)
     }
+
+    @GetMapping("/{screenerId}")
+    fun getScreener(@PathVariable screenerId: String): Screener {
+        return screenerService.getScreener(screenerId)
+    }
 }
