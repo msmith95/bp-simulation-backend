@@ -10,7 +10,7 @@ class ScreenerService(
 ) {
 
     fun getScreener(screenerId: String): Screener {
-        return screenerRepository.getById(screenerId)
+        return screenerRepository.findWithAllById(screenerId)
     }
 
     /**

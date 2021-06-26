@@ -18,8 +18,8 @@ data class Screener(
     @Column(name = "full_name")
     val fullName: String,
 
-    @OneToOne
-    @JoinColumn(name = "screener_id", referencedColumnName = "screener_id")
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", referencedColumnName = "screener_id")
     val content: ScreenerContent
 ) {
     override fun equals(other: Any?): Boolean {

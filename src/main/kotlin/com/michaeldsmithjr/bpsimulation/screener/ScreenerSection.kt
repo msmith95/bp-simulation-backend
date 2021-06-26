@@ -2,6 +2,8 @@ package com.michaeldsmithjr.bpsimulation.screener
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.Hibernate
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
 import javax.persistence.*
 
 @Entity
@@ -19,26 +21,28 @@ data class ScreenerSection(
 
     val title: String,
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(
         schema = "screener",
         name = "answer_option_to_section",
         joinColumns = [
-            JoinColumn(name = "screener_id")],
+            JoinColumn(name = "section_id")],
         inverseJoinColumns = [
             JoinColumn(name = "answer_id")
         ]
     )
     val answers: List<ScreenerAnswerOption>,
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(
         schema = "screener",
         name = "question_to_section",
         joinColumns = [
-            JoinColumn(name = "screener_id")],
+            JoinColumn(name = "section_id")],
         inverseJoinColumns = [
-            JoinColumn(name = "question_id")
+            JoinColumn(name = "question_id", referencedColumnName = "")
         ]
     )
     val questions: List<ScreenerQuestion>,

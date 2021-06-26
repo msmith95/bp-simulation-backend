@@ -10,6 +10,8 @@ import javax.persistence.*
 @Table(schema = "screener", name = "question")
 data class ScreenerQuestion(
     @Id
+    @Column(name = "question_id")
+    @JsonProperty("question_id")
     val questionId: String,
 
     val title: String
