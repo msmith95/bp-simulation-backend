@@ -72,9 +72,18 @@ provide the ability to monitor real users and discover areas or poor performance
 the whole stack making it easier to track down problems.
 
 ## Trade-offs
-
+Due to a limited amount of time, there were some areas I chose not to focus on. I did not add much error
+handling or input validation. With more time, I would have added validation to ensure the passed in API
+data is correctly formatted. I would also have added a mechanism to let the user know if there was an
+issue on the frontend. Additionally, I would also have added logging for compliance purposes as well as
+tracking down any issues in production. For storing the
+screener in the database I made some assumptions as to the structure of the information. With more time
+and information, I might have structured the database differently. Lastly, there is obviously no authentication
+or concept of a user. In a real application, there would be a full authentication/authorization system
+ensuring that only authorized people can view their own data. There would also probably be other systems that would
+need to be integrated with to complete the assigning of level 2 screeners.
 
 ## Resume/Public Profile
-Resume link: here
+Resume link: [here](https://drive.google.com/file/d/0BwNS9vdelAQfUVRqS0pCRXZKbzg/view?usp=sharing&resourcekey=0--sXUytA5Dv6AoYPltjmwZA)
 
 Linkedin link: [here](https://www.linkedin.com/in/michael-smith-jr-a73b1a120/)
